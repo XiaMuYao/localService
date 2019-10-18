@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Neo Stub</title>
+    <meta charset="UTF-8"/>
+    <th:block th:replace="common/tags :: head"></th:block>
+</head>
+<body>
+<div style="padding:20px;">
+    <form method="post" th:action="@{/update}">
+        <div class="form-group">
+            <label for="email">File Name</label>
+            <p class="form-control-static" th:text="${fileName}"></p>
+            <input type="hidden" id="fileName" name="fileName" th:value="${fileName}">
+        </div>
+        <div class="form-group">
+            <label for="password">Content</label>
+            <textarea class="form-control" cols="" 80 rows="30" id="fileContent" name="fileContent"
+                      th:text="${fileContent}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+        <a th:href="@{/}" class="btn btn-default">Back</a>
+    </form>
+</div>
+</body>
+</html>

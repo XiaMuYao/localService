@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Neo Stub</title>
+    <meta charset="UTF-8"/>
+    <th:block th:replace="common/tags :: head"></th:block>
+</head>
+<body>
+<div style="padding:20px;">
+    <div class="alert alert-danger alert-dismissible" th:if="${message != null}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <span th:text="${message}"></span>
+    </div>
+    <h1>Neo Stub</h1>
+    <hr>
+    <h2>Upload File</h2>
+    <form method="POST" th:action="@{/upload}" enctype="multipart/form-data">
+        <input type="file" id="file" name="file">
+        <input type="submit" class="btn btn-success" value="Upload">
+    </form>
+    <hr>
+    <h2>File List</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>File Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data, stat : ${fileList}">
+            <th scope="row" th:text="${stat.index+1} "></th>
+            <td><a th:href="@{/detail(f=${data})}"><span th:text="${data}"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
